@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 class Data {
     Product product;
@@ -20,14 +19,30 @@ public class Cart {
     }
     public void removeFromCart(Product product){
         for(Data data:cart){
-        if(data.product.getName().equals(product.getName())){
-            cart.remove(data);
-        }
+            if(data.product.getName().equals(product.getName())){
+                cart.remove(data);
+            }
         }
     }
     public void displayCart(){
         for(Data data:cart){
         System.out.println(data.product.getName()+" "+data.product.getPrice()+" "+data.product.getCategory()+" "+"Quantity: "+data.quantity);
         }
+    }
+    public boolean checkItem(String name){
+        for(Data product:cart){
+            if(product.product.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void calculateBill(){
+        int total = 0;
+        for(Data product:cart){
+            total += product.quantity * product.product.getPrice();
+        }
+        System.out.println(total);
     }
 }

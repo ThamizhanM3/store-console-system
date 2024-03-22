@@ -22,7 +22,6 @@ public class ItemDB {
             }
         }
         return false;
-
     }
     
     public void display(){
